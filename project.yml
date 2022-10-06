@@ -1,0 +1,33 @@
+kind: project
+metadata:
+  name: parllel-testing
+  created: '2022-09-18T08:50:05.056000'
+spec:
+  functions:
+  - url: db://gilad-testing/serving
+    name: serving
+  - url: db://gilad-testing/add-2
+    name: add-2
+  - url: db://gilad-testing/func
+    name: func
+  - url: db://gilad-testing/op1
+    name: op1
+  - url: db://gilad-testing/op2
+    name: op2
+  workflows:
+  - path: workflow.py
+    name: workflow-scheduler
+  - path: workflow.py
+    name: workflow-scheduler-1
+  - path: workflow.py
+    name: testing
+  - path: workflow-1.py
+    name: main
+    schedule: '*/10 * * * *'
+  artifacts: []
+  source: v3io:///v3io/users/testing/workflow/
+  load_source_on_run: false
+  desired_state: online
+  owner: shapira
+status:
+  state: online
